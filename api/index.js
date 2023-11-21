@@ -20,7 +20,7 @@ app.listen(4000, () => {
 });
 
 app.use("/api/user", userRouter);
-app.use("/api/user", userSignUp);
+app.use("/api/auth", userSignUp);
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
   const message = err.message || "Internal Server Error";
