@@ -4,7 +4,6 @@ import { errorHandler } from "../ultis/errorHandler.js";
 import jwt from "jsonwebtoken";
 
 export const signUp = async (req, res, next) => {
-  console.log("body", req.body);
   const { username, email, password } = req.body;
   const hashPassword = bcryptjs.hashSync(password, 10);
   const newUser = new User({ username, email, password: hashPassword });
@@ -12,7 +11,6 @@ export const signUp = async (req, res, next) => {
     await newUser.save();
     res.status(200).json("created new user completed!!!");
   } catch (error) {
-    // res.status(500).json(error.message);
     next(error);
   }
 };

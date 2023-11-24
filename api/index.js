@@ -2,7 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import userRouter from "./routes/user.route.js";
-import userSignUp from "./routes/auth.route.js";
+import AuthUser from "./routes/auth.route.js";
 dotenv.config();
 const app = express();
 
@@ -20,7 +20,7 @@ app.listen(4000, () => {
 });
 
 app.use("/api/user", userRouter);
-app.use("/api/auth", userSignUp);
+app.use("/api/auth", AuthUser);
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
   const message = err.message || "Internal Server Error";
